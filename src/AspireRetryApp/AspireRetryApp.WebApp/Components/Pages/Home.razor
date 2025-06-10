@@ -1,0 +1,50 @@
+﻿@page "/"
+@rendermode InteractiveServer
+
+@inject IApiServiceClient Client
+
+<PageTitle>Home</PageTitle>
+
+<FluentLayout>
+    <FluentHeader>HttpClient Retry Issue</FluentHeader>
+
+    <FluentStack Orientation="Orientation.Vertical">
+        <FluentLabel Typo="Typography.Subject">HttpClient call to API that throws an exception (simulates unhandled exception)</FluentLabel>
+        <br />
+
+        <FluentLabel Typo="Typography.Subject">
+            When calling the API via OpenAPI (Scalar/Swagger) the method is called only once
+            (The <code>throw exception</code> call in the minimal API breaks once in the IDE).<br />
+            When calling from Blazor using HttpClient the method appears to be retried four times
+            (The <code>throw exception</code> call in the minimal API breaks four times in the IDE).
+        </FluentLabel>
+
+        <FluentLabel Typo="Typography.Body">
+            Both Scalar and Swagger are configured for Open API.<br />
+            In the Aspire dashboard, Scalar is the default. <br />
+            You can use either of the following links to launch the either one.<br />
+            Execute the <code>/development/throw-exception</code> endpoint.
+        </FluentLabel>
+        <br />
+        <FluentAnchor Appearance="Appearance.Accent" Href="https://localhost:7562/scalar" Target="_blank">
+            Scalar
+        </FluentAnchor>
+        <FluentAnchor Appearance="Appearance.Accent" Href="https://localhost:7562/swagger" Target="_blank">
+            Swagger
+        </FluentAnchor>
+        <br /><br />
+
+        <FluentLabel Typo="Typography.Subject">
+            Normally it takes 2-5 seconds for each retry so you need to wait between IDE breaks in the API
+            to see this result.
+        </FluentLabel>
+        <FluentButton Appearance="Appearance.Accent" @onclick="CallApi">From Blazor</FluentButton>
+    </FluentStack>
+</FluentLayout>
+
+@code {
+    private async Task CallApi()
+    {
+        await Client.Development.ThrowException("API call from Blazor.");
+    }
+}
