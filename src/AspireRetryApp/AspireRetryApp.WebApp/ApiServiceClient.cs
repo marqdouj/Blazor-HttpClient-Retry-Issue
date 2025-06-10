@@ -1,6 +1,4 @@
-﻿using AspireRetryApp.ApiClient;
-
-namespace AspireRetryApp.WebApp
+﻿namespace AspireRetryApp.WebApp
 {
     public interface IApiServiceClient
     {

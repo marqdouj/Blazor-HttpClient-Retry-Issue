@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.WebUtilities;
 
-namespace AspireRetryApp.ApiClient
+namespace AspireRetryApp.WebApp
 {
     public interface IDevelopmentClient
     {
