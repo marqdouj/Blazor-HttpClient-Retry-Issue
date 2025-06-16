@@ -8,3 +8,7 @@ when executed in Blazor via HttpClient
 - .NET 10 Preview 4
 - .NET Aspire 9.3
 - Visual Studio 17.14.4 Preview 1.0
+
+## Visual Studio Feedback
+This demo is related to issue [#10919748](https://developercommunity.visualstudio.com/t/HttpClient-retries-4-times-in-Blazor-but/10919748)
+
